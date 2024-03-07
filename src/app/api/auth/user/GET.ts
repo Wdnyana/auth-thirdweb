@@ -1,0 +1,23 @@
+// user.ts
+
+import { getUser } from '../[...thirdweb]/route'
+import { NextApiRequest, NextApiResponse } from 'next'
+
+export default async function GET(req: NextApiRequest, res: NextApiResponse) {
+  // Get the user off the request
+  const user = await getUser(req)
+
+  console.log('ini user: ', user)
+
+  // Check if the user is authenticated
+  if (!user) {
+    return res.status(401).json({
+      message: 'Not authorized.',
+    })
+  }
+
+  // Return a protected resource to the authenticated user
+  return res.status(200).json({
+    message: `This is a secret for ${user.address}.`,
+  })
+}
