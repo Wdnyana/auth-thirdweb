@@ -21,7 +21,7 @@ const ThirdwebProviders = ({
       activeChain={activeChain}
       clientId={clientId}
       authConfig={{
-        domain: 'localhost',
+        domain: process.env.NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN || '',
         authUrl: '/api/auth',
       }}
       supportedWallets={[

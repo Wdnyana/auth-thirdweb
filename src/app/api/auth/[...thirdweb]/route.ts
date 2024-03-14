@@ -4,10 +4,8 @@ import env from '@/lib/env'
 
 const users: Record<string, any> = {}
 
-console.log('ini domain: ', env.thirdweb.authDomain)
-
 export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
-  domain: 'localhost',
+  domain: process.env.NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN || '',
   wallet: new PrivateKeyWallet(env.thirdweb.walletPrivateKey),
 
   callbacks: {
