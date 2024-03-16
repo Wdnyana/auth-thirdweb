@@ -1,8 +1,5 @@
-import type { Session } from 'next-auth'
-import { NextApiRequest, NextApiResponse } from 'next'
 import users from '@/entities/Users'
 import { UsersTypes } from '@/types/users'
-import clientPromise from '@/lib/mongo'
 
 export const createUsers = async (param: UsersTypes) => {
   const { name, email, password, role } = param
